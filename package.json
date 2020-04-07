@@ -12,20 +12,38 @@
     "@types/react-dom": "^16.9.0",
     "@types/webfontloader": "^1.6.29",
     "exsurge": "git+ssh://git@gitlab.com:sourceandsummit/exsurge.git#feature/react-native",
-    "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2",
     "webfontloader": "^1.6.28"
   },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "main": "dist/js/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/js/index.d.ts",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:lib": "yarn build:babel && yarn build:types && node ./scripts/copyTS.js",
+    "build:babel": "concurrently \"yarn build:babel:esm && yarn build:babel:umd\" \"yarn build:babel:cjs\"",
+    "build:babel:cjs": "BABEL_ENV=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js --presets=@babel/env",
+    "build:babel:esm": "BABEL_ENV=esm babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
+    "build:babel:umd": "BABEL_ENV=umd babel --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
+    "build:types": "tsc -p tsconfig.gen-dts.json",
+    "clean": "rimraf dist",
+    "develop": "yarn build:types && yarn build:babel:esm --watch --verbose"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(exsurge)/)"
+    ]
   },
   "browserslist": {
     "production": [
@@ -38,5 +56,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-plugin-typescript-to-proptypes": "^1.3.2",
+    "concurrently": "^5.1.0",
+    "react": "^16.13.1"
   }
 }

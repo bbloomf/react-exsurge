@@ -1,0 +1,37 @@
+import React from "react";
+import * as exsurge from "exsurge";
+import { TextTypesOptions } from "../interfaces/TextTypeOptions";
+interface ExsurgeProps {
+    gabc: string;
+    useDropCap?: boolean;
+    annotation?: string | string[];
+    contentEditable?: boolean;
+    alignment?: "english" | "latin";
+    width?: number;
+    height?: number;
+    zoom?: number;
+    selection?: exsurge.Selection;
+    id?: string;
+    style?: any;
+    className?: string;
+    supertitle?: string;
+    title?: string;
+    subtitle?: string;
+    textLeft?: string;
+    textRight?: string;
+    defaultFont?: string;
+    defaultColor?: string;
+    defaultTitleAlignment?: string;
+    font?: string;
+    baseFontSize?: number;
+    staffSize?: number;
+    interSyllabicSpacing?: number;
+    spaceBetweenSystems?: number;
+    spaceAboveLyrics?: number;
+    textStyles?: TextTypesOptions;
+    onScoreUpdate?(score: exsurge.ChantScore, gabceHeaderLen: number): any;
+    onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
+}
+declare const Exsurge: React.FC<ExsurgeProps>;
+export default Exsurge;
+export * from "exsurge";

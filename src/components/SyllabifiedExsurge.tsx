@@ -82,7 +82,7 @@ const Exsurge: React.FC<SyllabifiedExsurgeProps> = ({
 
   onScoreUpdate,
   onKeyDown,
-}: ExsurgeProps) => {
+}: SyllabifiedExsurgeProps) => {
   const gabc = useGabcMerge(text, notation, capitalizeInitial);
 
   return (

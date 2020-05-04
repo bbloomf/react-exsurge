@@ -1,5 +1,6 @@
 import React from "react";
 import * as exsurge from "exsurge";
+import Exsurge from './Exsurge';
 import { TextTypesOptions } from "../interfaces/TextTypeOptions";
 
 import { useGabcMerge } from '../hooks/useGabcMerge';
@@ -38,13 +39,13 @@ interface SyllabifiedExsurgeProps {
   spaceBetweenSystems?: number;
   spaceAboveLyrics?: number;
 
-  // textStyles?: TextTypesOptions;
+  textStyles?: TextTypesOptions;
 
   onScoreUpdate?(score: exsurge.ChantScore, gabceHeaderLen: number): any;
   onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
 }
 
-const Exsurge: React.FC<SyllabifiedExsurgeProps> = ({
+const SyllabifiedExsurge: React.FC<SyllabifiedExsurgeProps> = ({
   text,
   notation,
   capitalizeInitial = true,

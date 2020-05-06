@@ -5,7 +5,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _exportNames = {};
+var _exportNames = {
+  SyllabifiedExsurge: true
+};
+Object.defineProperty(exports, "SyllabifiedExsurge", {
+  enumerable: true,
+  get: function get() {
+    return _SyllabifiedExsurge.default;
+  }
+});
 exports.default = void 0;
 
 var _Exsurge = _interopRequireWildcard(require("./components/Exsurge"));
@@ -20,6 +28,10 @@ Object.keys(_Exsurge).forEach(function (key) {
     }
   });
 });
+
+var _SyllabifiedExsurge = _interopRequireDefault(require("./components/SyllabifiedExsurge"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

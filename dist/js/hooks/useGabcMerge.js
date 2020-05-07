@@ -60,7 +60,7 @@ var normalizeInputs = function normalizeInputs(text, notation) {
 };
 
 var splitInputs = function splitInputs(text, notation) {
-  var syllables = text.split(/\s+--\s+|\+|(\s*\(?"[^"]+"\)?-?)|(?=\s|(?<=[^\s-]-)[^\s-])/).filter(function (syl) {
+  var syllables = text.split(/\s+--\s+|\+|(\s*\(?"[^"]+"\)?-?)|([^\s-+]+-)(?=[^\s-])|(?=\s)/).filter(function (syl) {
     return syl && syl.trim();
   });
   var notationNodes = notation.split(/\s+/);

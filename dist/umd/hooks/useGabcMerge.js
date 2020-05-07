@@ -68,7 +68,7 @@
   };
 
   const splitInputs = (text, notation) => {
-    const syllables = text.split(/\s+--\s+|\+|(\s*\(?"[^"]+"\)?-?)|(?=\s|(?<=[^\s-]-)[^\s-])/).filter(syl => syl && syl.trim());
+    const syllables = text.split(/\s+--\s+|\+|(\s*\(?"[^"]+"\)?-?)|([^\s-+]+-)(?=[^\s-])|(?=\s)/).filter(syl => syl && syl.trim());
     const notationNodes = notation.split(/\s+/);
     return {
       syllables,

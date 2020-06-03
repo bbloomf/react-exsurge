@@ -3,7 +3,6 @@ export const useGabcMerge = (syllabifiedText, musicalNotation, useLargeInitial =
     text,
     notation
   } = normalizeInputs(syllabifiedText, musicalNotation);
-  if (!text) return notation;
   if (!notation) return text;
   const {
     syllables,
@@ -39,7 +38,12 @@ const regexFindParens = /^\((.*)\)$/;
 const normalizeInputs = (text, notation) => {
   // normalize the text, getting rid of multiple consecutive whitespace,
   // and handling lilypond's \forceHyphen directive
-  text = text.replace(/%[^\n]*(\n|$)/g, '$1').replace(/\s*\n\s*/g, '\n').replace(/(\s)\s+/g, '$1').replace(/\\forceHyphen\s+(\S+)\s+--\s+/g, '$1-').trim();
+  // remove flex and mediant symbols if accents are marked with pipes:
+  if (/\|/.test(text)) {
+    text = text.replace(/[†*]/g, "");
+  }
+
+  text = text.replace(/%[^\n]*(\n|$)/g, '$1').replace(/\s*\n\s*/g, '\n').replace(/(\s)\s+/g, '$1').replace(/\\forceHyphen\s+(\S+)\s+--\s+/g, '$1-').replace(/\|([^|]+)\|/g, '+$1+').replace(/([ -])\+|\+(\W*(?:[-\s]|$))/g, '$1$2').trim();
   notation = notation.replace(/%[^\n]*(\n|$)/g, '$1').trim();
   return {
     text,
@@ -48,7 +52,7 @@ const normalizeInputs = (text, notation) => {
 };
 
 const splitInputs = (text, notation) => {
-  const syllables = text.split(/\s+--\s+|\+|(\s*\(?"[^"]+"\)?-?)|([^\s-+]+-)(?=[^\s-])|(?=\s)/).filter(syl => syl && syl.trim());
+  const syllables = text.split(/\s+--\s+|\+|(\s*\(?"[^"]+"\)?-?)|(\s*[^\s-+]+-)(?=[^\s-])|(?=\s)/).filter(syl => syl && syl.trim());
   const notationNodes = notation.split(/\s+/);
   return {
     syllables,

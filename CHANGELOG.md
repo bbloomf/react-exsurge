@@ -1,3 +1,12 @@
+# [1.0.0-alpha.6](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2020-06-08)
+
+
+### Bug Fixes
+
+* Properly combine GABC with empty lyric text ([6ff4b39](https://gitlab.com/sourceandsummit/react-exsurge/commit/6ff4b39a8fe038164fd3f1fd65a6f0e3792f1d84))
+
+
+
 # [1.0.0-alpha.5](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2020-06-08)
 
 

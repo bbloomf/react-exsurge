@@ -11,7 +11,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/webfontloader": "^1.6.29",
-    "exsurge": "git+ssh://git@gitlab.com:sourceandsummit/exsurge.git#feature/react-native",
+    "exsurge": "git+ssh://git@gitlab.com/sourceandsummit/exsurge.git#v1.0.0",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2",

@@ -1,12 +1,11 @@
     export const useGabcMerge = (syllabifiedText: string, musicalNotation: string, useLargeInitial: boolean = true) => {
 
       const { text, notation } = normalizeInputs(syllabifiedText, musicalNotation);
-    
-      if (!text) return notation;
+
       if (!notation) return text;
-    
+
       const { syllables, notationNodes } = splitInputs(text, notation);
-    
+
       let sylNdx = 0
       let isFirstSyl = true;
       let result = notationNodes
@@ -19,7 +18,7 @@
         .join('')
         .trim()
       ;
-    
+
       // add any additional syllables that come after the last notation data:
       while (sylNdx < syllables.length) {
         result +=
@@ -27,66 +26,73 @@
       }
       return result;
     }
-    
+
     /*-----  REGEX DEFS  -----*/
     const regexClef = /^[cf]b?[1-4]$/;
     const regexNonSyllabicGabc = /^([cf]b?[1-4]|[,;:`]+|[a-m]\+|[zZ]0?)+$/;
     const regexFindParensWithLeadSpaces = /^(\s*)\((.*)\)$/;
     const regexFindParens = /^\((.*)\)$/;
-    
+
     /*-----  NORMALIZATION FUNCTIONS  -----*/
     const normalizeInputs = (text: string, notation: string): { text: string, notation: string } => {
       // normalize the text, getting rid of multiple consecutive whitespace,
       // and handling lilypond's \forceHyphen directive
+      
+      // remove flex and mediant symbols if accents are marked with pipes:
+      if (/\|/.test(text)) {
+        text = text.replace(/[†*]/g, "");
+      }
       text = text
         .replace(/%[^\n]*(\n|$)/g, '$1')
         .replace(/\s*\n\s*/g, '\n')
         .replace(/(\s)\s+/g, '$1')
         .replace(/\\forceHyphen\s+(\S+)\s+--\s+/g, '$1-')
+        .replace(/\|([^|]+)\|/g, '+$1+')
+        .replace(/([ -])\+|\+(\W*(?:[-\s]|$))/g, '$1$2')
         .trim()
       ;
-    
+
       notation = notation.replace(/%[^\n]*(\n|$)/g, '$1').trim();
-    
+
       return { text, notation }
     }
-    
+
     const splitInputs = (text: string, notation: string): { syllables: string[], notationNodes: string[] } => {
       const syllables = text
-        .split(/\s+--\s+|\+|(\s*\(?"[^"]+"\)?-?)|([^\s-+]+-)(?=[^\s-])|(?=\s)/)
+      .split(/\s+--\s+|\+|(\s*\(?"[^"]+"\)?-?)|(\s*[^\s-+]+-)(?=[^\s-])|(?=\s)/)
         .filter((syl) => syl && syl.trim());
-  
+
       const notationNodes = notation.split(/\s+/);
-    
+
       return { syllables, notationNodes };
     }
-    
+
     /*-----  STRING UTIL FUNCTIONS  -----*/
     const stripParens = (s: string) => {
       return s.replace(regexFindParensWithLeadSpaces, '$1$2')
           s.replace(regexFindParens, '$1')
       ;
     }
-    
+
     /*-----  GETTER FUNCTIONS  -----*/
     const getSyllable = (syllables: string[], index: number) => {
       return (syllables[index] || ' ').replace(/^(\s*)"(.*)"$/, '$1$2');
     }
-    
+
     const getNonSyllable = (syllables: string[], syllableNdx: number, notation: string): string => {
       let syllable = syllables[syllableNdx];
-    
+
       if (/^(\s*!|[^a-záéíóúýàèìòùäëïöüÿæœǽœ́]+$|\s*\(.*\)$|\s*"\(.*\)"$)/i.test(syllable)
           && !regexClef.test(notation)) {
-    
+
         return syllable.replace(/^(\s*)!/, '$1')
             .replace(/^(\s*)"?\((.*?)\)"?$/, '$1$2')
         ;
       }
-    
+
       return ' ';
     }
-    
+
     /*-----  PROCESSOR FUNCTIONS  -----*/
     const mapSyllable = (
       notation: string,
@@ -96,33 +102,33 @@
     ): { syllable: string, nextIndex: number, isFirstSyllable: boolean } => {
       const noSyllable = regexNonSyllabicGabc.test(notation) || /^\(.*\)$/.test(notation);
       notation = stripParens(notation);
-    
+
       let syllable = noSyllable ? getNonSyllable(syllables, sylNdx, notation) : getSyllable(syllables, sylNdx++);
       if (!noSyllable) {
         let nextSyllable = syllable;
         syllable = stripParens(syllable);
-    
+
         while (/^\s*\(.*\)$/.test(nextSyllable)) {
           if (/^".*"$/.test(syllable)) {
             syllable = syllable.slice(1, -1);
           }
-    
+
           nextSyllable = getSyllable(syllables, sylNdx++);
           syllable += '()' + stripParens(nextSyllable);
         }
-    
+
         if (isFirstSyllable) {
           isFirstSyllable = false;
-    
+
           syllable = capitalizeInitial(syllable, syllables[sylNdx]);
         }
       }
-    
+
       syllable = syllable + '(' + notation + ')';
-    
+
       return { syllable, nextIndex: sylNdx, isFirstSyllable }
     }
-    
+
     const capitalizeInitial = (syllable: string, nextSyllable: string): string => {
       if (/^\s*[a-záéíóúýàèìòùäëïöüÿæœǽœ́]+/i.test(syllable)) {
         // special capitalization rules for the large initial:
@@ -133,7 +139,6 @@
           syllable = syllable.toUpperCase();
         }
       }
-    
+
       return syllable;
     }
-    

@@ -9,9 +9,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Exsurge = _interopRequireDefault(require("./Exsurge"));
+var _gabcUtils = require("gabc-utils");
 
-var _useGabcMerge = require("../hooks/useGabcMerge");
+var _Exsurge = _interopRequireDefault(require("./Exsurge"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48,7 +48,9 @@ var SyllabifiedExsurge = function SyllabifiedExsurge(_ref) {
       textStyles = _ref.textStyles,
       onScoreUpdate = _ref.onScoreUpdate,
       onKeyDown = _ref.onKeyDown;
-  var gabc = (0, _useGabcMerge.useGabcMerge)(text, notation, capitalizeInitial);
+
+  var gabc = _gabcUtils.GabcSyllabified.merge(text, notation, capitalizeInitial);
+
   return /*#__PURE__*/_react.default.createElement(_Exsurge.default, {
     gabc: gabc,
     useDropCap: useDropCap,

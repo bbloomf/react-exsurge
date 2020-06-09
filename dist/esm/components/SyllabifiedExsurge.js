@@ -1,7 +1,7 @@
 import _pt from "prop-types";
 import React from "react";
+import { GabcSyllabified } from 'gabc-utils';
 import Exsurge from './Exsurge';
-import { useGabcMerge } from '../hooks/useGabcMerge';
 
 const SyllabifiedExsurge = ({
   text,
@@ -36,7 +36,7 @@ const SyllabifiedExsurge = ({
   onScoreUpdate,
   onKeyDown
 }) => {
-  const gabc = useGabcMerge(text, notation, capitalizeInitial);
+  const gabc = GabcSyllabified.merge(text, notation, capitalizeInitial);
   return /*#__PURE__*/React.createElement(Exsurge, {
     gabc: gabc,
     useDropCap: useDropCap,

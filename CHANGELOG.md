@@ -1,3 +1,7 @@
+# [1.0.0-alpha.7](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2020-06-09)
+
+
+
 # [1.0.0-alpha.6](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2020-06-08)
 
 

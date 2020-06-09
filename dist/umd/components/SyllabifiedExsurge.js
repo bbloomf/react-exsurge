@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["exports", "prop-types", "react", "./Exsurge", "../hooks/useGabcMerge"], factory);
+    define(["exports", "prop-types", "react", "gabc-utils", "./Exsurge"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require("prop-types"), require("react"), require("./Exsurge"), require("../hooks/useGabcMerge"));
+    factory(exports, require("prop-types"), require("react"), require("gabc-utils"), require("./Exsurge"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.propTypes, global.react, global.Exsurge, global.useGabcMerge);
+    factory(mod.exports, global.propTypes, global.react, global.gabcUtils, global.Exsurge);
     global.undefined = mod.exports;
   }
-})(this, function (exports, _propTypes, _react, _Exsurge, _useGabcMerge) {
+})(this, function (exports, _propTypes, _react, _gabcUtils, _Exsurge) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
@@ -62,7 +62,8 @@
     onScoreUpdate,
     onKeyDown
   }) => {
-    const gabc = (0, _useGabcMerge.useGabcMerge)(text, notation, capitalizeInitial);
+    const gabc = _gabcUtils.GabcSyllabified.merge(text, notation, capitalizeInitial);
+
     return /*#__PURE__*/_react2.default.createElement(_Exsurge2.default, {
       gabc: gabc,
       useDropCap: useDropCap,

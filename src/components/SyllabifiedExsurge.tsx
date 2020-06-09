@@ -1,9 +1,9 @@
 import React from "react";
 import * as exsurge from "exsurge";
+import { GabcSyllabified } from 'gabc-utils';
+
 import Exsurge from './Exsurge';
 import { TextTypesOptions } from "../interfaces/TextTypeOptions";
-
-import { useGabcMerge } from '../hooks/useGabcMerge';
 
 interface SyllabifiedExsurgeProps {
   text: string;
@@ -84,7 +84,7 @@ const SyllabifiedExsurge: React.FC<SyllabifiedExsurgeProps> = ({
   onScoreUpdate,
   onKeyDown,
 }: SyllabifiedExsurgeProps) => {
-  const gabc = useGabcMerge(text, notation, capitalizeInitial);
+  const gabc = GabcSyllabified.merge(text, notation, capitalizeInitial);
 
   return (
     <Exsurge

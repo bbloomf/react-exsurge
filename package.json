@@ -11,7 +11,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/webfontloader": "^1.6.29",
-    "exsurge": "git+ssh://git@gitlab.com/sourceandsummit/exsurge.git#v1.0.0",
+    "exsurge": "git+ssh://git@gitlab.com/sourceandsummit/exsurge.git#v1.0.1",
     "gabc-utils": "git+ssh://git@gitlab.com/sourceandsummit/gabc-utils.git#v2.1.2",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",

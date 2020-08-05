@@ -1,3 +1,12 @@
+## [1.1.3](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.2...v1.1.3) (2020-08-05)
+
+
+### Bug Fixes
+
+* **exsurge:** Update exsurge project to fix a rendering bug ([31ab3d1](https://gitlab.com/sourceandsummit/react-exsurge/commit/31ab3d17f612e88bc3f6caf1c92761827456ba3c))
+
+
+
 ## [1.1.2](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.1...v1.1.2) (2020-08-04)
 
 

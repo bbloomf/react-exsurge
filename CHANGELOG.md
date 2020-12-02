@@ -1,3 +1,12 @@
+## [1.1.5](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.4...v1.1.5) (2020-12-02)
+
+
+### Bug Fixes
+
+* **dist:** Remove ?. operator from built files ([881b94c](https://gitlab.com/sourceandsummit/react-exsurge/commit/881b94c2646207d30c43e91c132442a0410c74a8))
+
+
+
 ## [1.1.4](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.3...v1.1.4) (2020-08-26)
 
 

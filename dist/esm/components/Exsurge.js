@@ -38,15 +38,17 @@ const Exsurge = ({
   onScoreUpdate,
   onKeyDown
 }) => {
-  const supertitleSize = textStyles.supertitle?.size;
-  const titleSize = textStyles.title?.size;
-  const subtitleSize = textStyles.subtitle?.size;
-  const leftRightSize = textStyles.leftRight?.size;
+  var _textStyles$supertitl, _textStyles$title, _textStyles$subtitle, _textStyles$leftRight, _textStyles$supertitl2, _textStyles$title2, _textStyles$subtitle2, _textStyles$leftRight2, _textStyles$annotatio, _textStyles$dropCap, _textStyles$al, _textStyles$choralSig, _textStyles$lyric, _textStyles$translati, _textStyles$supertitl3, _textStyles$title3, _textStyles$subtitle3, _textStyles$leftRight3, _textStyles$annotatio2, _textStyles$dropCap2, _textStyles$al2, _textStyles$choralSig2, _textStyles$lyric2, _textStyles$translati2, _textStyles$supertitl4, _textStyles$title4, _textStyles$subtitle4, _textStyles$leftRight4, _textStyles$annotatio3, _textStyles$dropCap3, _textStyles$al3, _textStyles$choralSig3, _textStyles$lyric3, _textStyles$translati3, _textStyles$supertitl5, _textStyles$title5, _textStyles$subtitle5;
+
+  const supertitleSize = (_textStyles$supertitl = textStyles.supertitle) === null || _textStyles$supertitl === void 0 ? void 0 : _textStyles$supertitl.size;
+  const titleSize = (_textStyles$title = textStyles.title) === null || _textStyles$title === void 0 ? void 0 : _textStyles$title.size;
+  const subtitleSize = (_textStyles$subtitle = textStyles.subtitle) === null || _textStyles$subtitle === void 0 ? void 0 : _textStyles$subtitle.size;
+  const leftRightSize = (_textStyles$leftRight = textStyles.leftRight) === null || _textStyles$leftRight === void 0 ? void 0 : _textStyles$leftRight.size;
   const annotationArray = useArray(annotation instanceof Array ? annotation : [annotation]);
-  const textFontsArray = useArray([textStyles.supertitle?.font, textStyles.title?.font, textStyles.subtitle?.font, textStyles.leftRight?.font, textStyles.annotation?.font, textStyles.dropCap?.font, textStyles.al?.font, textStyles.choralSign?.font, textStyles.lyric?.font, textStyles.translation?.font, font, defaultFont]);
-  const textSizesArray = useArray([textStyles.supertitle?.size, textStyles.title?.size, textStyles.subtitle?.size, textStyles.leftRight?.size, textStyles.annotation?.size, textStyles.dropCap?.size, textStyles.al?.size, textStyles.choralSign?.size, textStyles.lyric?.size, textStyles.translation?.size]);
-  const textColorsArray = useArray([textStyles.supertitle?.color, textStyles.title?.color, textStyles.subtitle?.color, textStyles.leftRight?.color, textStyles.annotation?.color, textStyles.dropCap?.color, textStyles.al?.color, textStyles.choralSign?.color, textStyles.lyric?.color, textStyles.translation?.color]);
-  const titleAlignmentsArray = useArray([textStyles.supertitle?.alignment, textStyles.title?.alignment, textStyles.subtitle?.alignment]);
+  const textFontsArray = useArray([(_textStyles$supertitl2 = textStyles.supertitle) === null || _textStyles$supertitl2 === void 0 ? void 0 : _textStyles$supertitl2.font, (_textStyles$title2 = textStyles.title) === null || _textStyles$title2 === void 0 ? void 0 : _textStyles$title2.font, (_textStyles$subtitle2 = textStyles.subtitle) === null || _textStyles$subtitle2 === void 0 ? void 0 : _textStyles$subtitle2.font, (_textStyles$leftRight2 = textStyles.leftRight) === null || _textStyles$leftRight2 === void 0 ? void 0 : _textStyles$leftRight2.font, (_textStyles$annotatio = textStyles.annotation) === null || _textStyles$annotatio === void 0 ? void 0 : _textStyles$annotatio.font, (_textStyles$dropCap = textStyles.dropCap) === null || _textStyles$dropCap === void 0 ? void 0 : _textStyles$dropCap.font, (_textStyles$al = textStyles.al) === null || _textStyles$al === void 0 ? void 0 : _textStyles$al.font, (_textStyles$choralSig = textStyles.choralSign) === null || _textStyles$choralSig === void 0 ? void 0 : _textStyles$choralSig.font, (_textStyles$lyric = textStyles.lyric) === null || _textStyles$lyric === void 0 ? void 0 : _textStyles$lyric.font, (_textStyles$translati = textStyles.translation) === null || _textStyles$translati === void 0 ? void 0 : _textStyles$translati.font, font, defaultFont]);
+  const textSizesArray = useArray([(_textStyles$supertitl3 = textStyles.supertitle) === null || _textStyles$supertitl3 === void 0 ? void 0 : _textStyles$supertitl3.size, (_textStyles$title3 = textStyles.title) === null || _textStyles$title3 === void 0 ? void 0 : _textStyles$title3.size, (_textStyles$subtitle3 = textStyles.subtitle) === null || _textStyles$subtitle3 === void 0 ? void 0 : _textStyles$subtitle3.size, (_textStyles$leftRight3 = textStyles.leftRight) === null || _textStyles$leftRight3 === void 0 ? void 0 : _textStyles$leftRight3.size, (_textStyles$annotatio2 = textStyles.annotation) === null || _textStyles$annotatio2 === void 0 ? void 0 : _textStyles$annotatio2.size, (_textStyles$dropCap2 = textStyles.dropCap) === null || _textStyles$dropCap2 === void 0 ? void 0 : _textStyles$dropCap2.size, (_textStyles$al2 = textStyles.al) === null || _textStyles$al2 === void 0 ? void 0 : _textStyles$al2.size, (_textStyles$choralSig2 = textStyles.choralSign) === null || _textStyles$choralSig2 === void 0 ? void 0 : _textStyles$choralSig2.size, (_textStyles$lyric2 = textStyles.lyric) === null || _textStyles$lyric2 === void 0 ? void 0 : _textStyles$lyric2.size, (_textStyles$translati2 = textStyles.translation) === null || _textStyles$translati2 === void 0 ? void 0 : _textStyles$translati2.size]);
+  const textColorsArray = useArray([(_textStyles$supertitl4 = textStyles.supertitle) === null || _textStyles$supertitl4 === void 0 ? void 0 : _textStyles$supertitl4.color, (_textStyles$title4 = textStyles.title) === null || _textStyles$title4 === void 0 ? void 0 : _textStyles$title4.color, (_textStyles$subtitle4 = textStyles.subtitle) === null || _textStyles$subtitle4 === void 0 ? void 0 : _textStyles$subtitle4.color, (_textStyles$leftRight4 = textStyles.leftRight) === null || _textStyles$leftRight4 === void 0 ? void 0 : _textStyles$leftRight4.color, (_textStyles$annotatio3 = textStyles.annotation) === null || _textStyles$annotatio3 === void 0 ? void 0 : _textStyles$annotatio3.color, (_textStyles$dropCap3 = textStyles.dropCap) === null || _textStyles$dropCap3 === void 0 ? void 0 : _textStyles$dropCap3.color, (_textStyles$al3 = textStyles.al) === null || _textStyles$al3 === void 0 ? void 0 : _textStyles$al3.color, (_textStyles$choralSig3 = textStyles.choralSign) === null || _textStyles$choralSig3 === void 0 ? void 0 : _textStyles$choralSig3.color, (_textStyles$lyric3 = textStyles.lyric) === null || _textStyles$lyric3 === void 0 ? void 0 : _textStyles$lyric3.color, (_textStyles$translati3 = textStyles.translation) === null || _textStyles$translati3 === void 0 ? void 0 : _textStyles$translati3.color]);
+  const titleAlignmentsArray = useArray([(_textStyles$supertitl5 = textStyles.supertitle) === null || _textStyles$supertitl5 === void 0 ? void 0 : _textStyles$supertitl5.alignment, (_textStyles$title5 = textStyles.title) === null || _textStyles$title5 === void 0 ? void 0 : _textStyles$title5.alignment, (_textStyles$subtitle5 = textStyles.subtitle) === null || _textStyles$subtitle5 === void 0 ? void 0 : _textStyles$subtitle5.alignment]);
   const [, setRenderCount] = useState(0);
   const ctxtRef = useRef();
   const headerLenRef = useRef(0);
@@ -122,6 +124,8 @@ const Exsurge = ({
   const resolveLocalFont = useCallback(newFont => resolveFont(loadedFontsRef.current, newFont, font, defaultFont), [font, defaultFont]); // Set fonts, sizes, and colors:
 
   useEffect(() => {
+    var _textStyles$lyric4;
+
     // don't set the fonts if they haven't yet loaded:
     if (getNotYetLoadedFonts(textFontsArray, loadedFontsRef.current).length > 0) return;
     const interSyllabicMultiplier = interSyllabicSpacing;
@@ -130,7 +134,7 @@ const Exsurge = ({
     ctxt.interVerbalMultiplier = interSyllabicMultiplier * 0.25;
     ctxt.spaceBetweenSystems = spaceBetweenSystems;
     ctxt.minSpaceBelowStaff = spaceAboveLyrics;
-    ctxt.setFont(resolveLocalFont(textStyles.lyric?.font), baseFontSize);
+    ctxt.setFont(resolveLocalFont((_textStyles$lyric4 = textStyles.lyric) === null || _textStyles$lyric4 === void 0 ? void 0 : _textStyles$lyric4.font), baseFontSize);
 
     for (let [k, textType] of Object.entries(exsurge.TextTypes)) {
       // Is there a better way to do type assertion than this?
@@ -150,7 +154,7 @@ const Exsurge = ({
         case "supertitle":
         case "title":
         case "subtitle":
-          ctxt.textStyles[key].alignment = textStyle?.alignment || defaultTitleAlignment;
+          ctxt.textStyles[key].alignment = (textStyle === null || textStyle === void 0 ? void 0 : textStyle.alignment) || defaultTitleAlignment;
           break;
         // TODO: allow padding to be changed? on dropCap and annotation
       }

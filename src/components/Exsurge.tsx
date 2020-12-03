@@ -452,7 +452,6 @@ const Exsurge: React.FC<ExsurgeProps> = ({
       id={id && id + "-" + i}
       className={`Exsurge ${className || ""}`}
       style={style}
-      contentEditable={contentEditable}
       onKeyDown={onKeyDown}
     >
       {createReactSvg(page.createSvgTree(ctxt, zoom))}

@@ -1,3 +1,12 @@
+## [1.1.6](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.5...v1.1.6) (2020-12-03)
+
+
+### Bug Fixes
+
+* **exsurge:** Don't use contentEditable with editable chants since it doesn't work right with the lyrics ([3691c0c](https://gitlab.com/sourceandsummit/react-exsurge/commit/3691c0cdb9b6ac63875579cab8eb2f0233d7d2a1))
+
+
+
 ## [1.1.5](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.4...v1.1.5) (2020-12-02)
 
 

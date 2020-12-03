@@ -247,7 +247,6 @@ const Exsurge = ({
     id: id && id + "-" + i,
     className: `Exsurge ${className || ""}`,
     style: style,
-    contentEditable: contentEditable,
     onKeyDown: onKeyDown
   }, createReactSvg(page.createSvgTree(ctxt, zoom))));
   return /*#__PURE__*/React.createElement(React.Fragment, null, divs);

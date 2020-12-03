@@ -350,7 +350,6 @@ var Exsurge = function Exsurge(_ref) {
       id: id && id + "-" + i,
       className: "Exsurge ".concat(className || ""),
       style: style,
-      contentEditable: contentEditable,
       onKeyDown: onKeyDown
     }, createReactSvg(page.createSvgTree(ctxt, zoom)));
   });

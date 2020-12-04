@@ -1,3 +1,12 @@
+## [1.1.8](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.7...v1.1.8) (2020-12-04)
+
+
+### Bug Fixes
+
+* **exsurge:** Update exsurge to fix some minor bugs ([348494b](https://gitlab.com/sourceandsummit/react-exsurge/commit/348494bdea3fb74d29085f80d69b0bd08bc5a4b1))
+
+
+
 ## [1.1.7](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.6...v1.1.7) (2020-12-03)
 
 

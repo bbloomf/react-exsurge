@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "exsurge": "git+ssh://git@gitlab.com/sourceandsummit/exsurge.git#v1.0.5",
+    "exsurge": "git+ssh://git@gitlab.com/sourceandsummit/exsurge.git#v1.0.6",
     "gabc-utils": "git+ssh://git@gitlab.com/sourceandsummit/gabc-utils.git#v2.3.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",

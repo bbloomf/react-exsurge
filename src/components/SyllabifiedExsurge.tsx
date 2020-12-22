@@ -8,6 +8,7 @@ import { TextTypesOptions } from "../interfaces/TextTypeOptions";
 interface SyllabifiedExsurgeProps {
   text: string;
   notation: string;
+  isEasterTime?: boolean;
   capitalizeInitial?: boolean;
   useDropCap?: boolean;
   annotation?: string | string[];
@@ -48,6 +49,7 @@ interface SyllabifiedExsurgeProps {
 const SyllabifiedExsurge: React.FC<SyllabifiedExsurgeProps> = ({
   text,
   notation,
+  isEasterTime,
   capitalizeInitial = true,
   useDropCap,
   annotation,
@@ -84,7 +86,7 @@ const SyllabifiedExsurge: React.FC<SyllabifiedExsurgeProps> = ({
   onScoreUpdate,
   onKeyDown,
 }: SyllabifiedExsurgeProps) => {
-  const gabc = GabcSyllabified.merge(text, notation, capitalizeInitial);
+  const gabc = GabcSyllabified.merge(text, notation, isEasterTime, capitalizeInitial);
 
   return (
     <Exsurge

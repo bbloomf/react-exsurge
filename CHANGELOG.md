@@ -1,3 +1,12 @@
+# [1.2.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.11...v1.2.0) (2020-12-22)
+
+
+### Features
+
+* **useGabcMerge:** Allow isEasterTime to be passed through to GabcMerge ([82e0e72](https://gitlab.com/sourceandsummit/react-exsurge/commit/82e0e724ecacba71b37677fdb909beecf34c0dcb))
+
+
+
 ## [1.1.11](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.1.10...v1.1.11) (2020-12-11)
 
 

@@ -4,6 +4,7 @@ import { TextTypesOptions } from "../interfaces/TextTypeOptions";
 interface SyllabifiedExsurgeProps {
     text: string;
     notation: string;
+    isEasterTime?: boolean;
     capitalizeInitial?: boolean;
     useDropCap?: boolean;
     annotation?: string | string[];

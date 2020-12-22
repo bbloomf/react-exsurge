@@ -6,6 +6,7 @@ import Exsurge from './Exsurge';
 const SyllabifiedExsurge = ({
   text,
   notation,
+  isEasterTime,
   capitalizeInitial = true,
   useDropCap,
   annotation,
@@ -36,7 +37,7 @@ const SyllabifiedExsurge = ({
   onScoreUpdate,
   onKeyDown
 }) => {
-  const gabc = GabcSyllabified.merge(text, notation, capitalizeInitial);
+  const gabc = GabcSyllabified.merge(text, notation, isEasterTime, capitalizeInitial);
   return /*#__PURE__*/React.createElement(Exsurge, {
     gabc: gabc,
     useDropCap: useDropCap,
@@ -73,6 +74,7 @@ const SyllabifiedExsurge = ({
 SyllabifiedExsurge.propTypes = {
   text: _pt.string.isRequired,
   notation: _pt.string.isRequired,
+  isEasterTime: _pt.bool,
   capitalizeInitial: _pt.bool,
   useDropCap: _pt.bool,
   annotation: _pt.oneOfType([_pt.string, _pt.arrayOf(_pt.string)]),
@@ -94,8 +96,7 @@ SyllabifiedExsurge.propTypes = {
   defaultTitleAlignment: _pt.string,
   font: _pt.string,
   baseFontSize: _pt.number,
-  staffSize: _pt.number,
-  interSyllabicSpacing: _pt.number
+  staffSize: _pt.number
 };
 export default SyllabifiedExsurge;
 //# sourceMappingURL=SyllabifiedExsurge.js.map

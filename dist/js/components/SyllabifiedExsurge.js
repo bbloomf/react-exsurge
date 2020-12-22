@@ -18,6 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SyllabifiedExsurge = function SyllabifiedExsurge(_ref) {
   var text = _ref.text,
       notation = _ref.notation,
+      isEasterTime = _ref.isEasterTime,
       _ref$capitalizeInitia = _ref.capitalizeInitial,
       capitalizeInitial = _ref$capitalizeInitia === void 0 ? true : _ref$capitalizeInitia,
       useDropCap = _ref.useDropCap,
@@ -49,7 +50,7 @@ var SyllabifiedExsurge = function SyllabifiedExsurge(_ref) {
       onScoreUpdate = _ref.onScoreUpdate,
       onKeyDown = _ref.onKeyDown;
 
-  var gabc = _gabcUtils.GabcSyllabified.merge(text, notation, capitalizeInitial);
+  var gabc = _gabcUtils.GabcSyllabified.merge(text, notation, isEasterTime, capitalizeInitial);
 
   return /*#__PURE__*/_react.default.createElement(_Exsurge.default, {
     gabc: gabc,
@@ -87,6 +88,7 @@ var SyllabifiedExsurge = function SyllabifiedExsurge(_ref) {
 SyllabifiedExsurge.propTypes = {
   text: _propTypes.default.string.isRequired,
   notation: _propTypes.default.string.isRequired,
+  isEasterTime: _propTypes.default.bool,
   capitalizeInitial: _propTypes.default.bool,
   useDropCap: _propTypes.default.bool,
   annotation: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.arrayOf(_propTypes.default.string)]),
@@ -108,8 +110,7 @@ SyllabifiedExsurge.propTypes = {
   defaultTitleAlignment: _propTypes.default.string,
   font: _propTypes.default.string,
   baseFontSize: _propTypes.default.number,
-  staffSize: _propTypes.default.number,
-  interSyllabicSpacing: _propTypes.default.number
+  staffSize: _propTypes.default.number
 };
 var _default = SyllabifiedExsurge;
 exports.default = _default;

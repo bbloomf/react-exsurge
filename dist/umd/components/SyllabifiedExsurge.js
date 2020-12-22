@@ -32,6 +32,7 @@
   const SyllabifiedExsurge = ({
     text,
     notation,
+    isEasterTime,
     capitalizeInitial = true,
     useDropCap,
     annotation,
@@ -62,7 +63,7 @@
     onScoreUpdate,
     onKeyDown
   }) => {
-    const gabc = _gabcUtils.GabcSyllabified.merge(text, notation, capitalizeInitial);
+    const gabc = _gabcUtils.GabcSyllabified.merge(text, notation, isEasterTime, capitalizeInitial);
 
     return /*#__PURE__*/_react2.default.createElement(_Exsurge2.default, {
       gabc: gabc,
@@ -100,6 +101,7 @@
   SyllabifiedExsurge.propTypes = {
     text: _propTypes2.default.string.isRequired,
     notation: _propTypes2.default.string.isRequired,
+    isEasterTime: _propTypes2.default.bool,
     capitalizeInitial: _propTypes2.default.bool,
     useDropCap: _propTypes2.default.bool,
     annotation: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]),
@@ -121,8 +123,7 @@
     defaultTitleAlignment: _propTypes2.default.string,
     font: _propTypes2.default.string,
     baseFontSize: _propTypes2.default.number,
-    staffSize: _propTypes2.default.number,
-    interSyllabicSpacing: _propTypes2.default.number
+    staffSize: _propTypes2.default.number
   };
   exports.default = SyllabifiedExsurge;
 });

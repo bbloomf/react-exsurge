@@ -144,8 +144,12 @@ var Exsurge = function Exsurge(_ref) {
     _ctxt.specialCharProperties["font-size"] = "120%";
     _ctxt.specialCharProperties["font-weight"] = "400";
 
+    var defaultSpecialCharText = _ctxt.specialCharText || function (char) {
+      return char;
+    };
+
     _ctxt.specialCharText = function (char) {
-      return char.toLowerCase();
+      return defaultSpecialCharText(char).toLowerCase();
     };
 
     _ctxt.textAfterSpecialChar = "";

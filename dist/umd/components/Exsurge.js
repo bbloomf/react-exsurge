@@ -154,7 +154,9 @@
       ctxt.specialCharProperties["font-size"] = "120%";
       ctxt.specialCharProperties["font-weight"] = "400";
 
-      ctxt.specialCharText = char => char.toLowerCase();
+      const defaultSpecialCharText = ctxt.specialCharText || (char => char);
+
+      ctxt.specialCharText = char => defaultSpecialCharText(char).toLowerCase();
 
       ctxt.textAfterSpecialChar = "";
       ctxt.setRubricColor("#d00");

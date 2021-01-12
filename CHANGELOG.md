@@ -1,3 +1,12 @@
+## [1.3.1](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.3.0...v1.3.1) (2021-01-12)
+
+
+### Bug Fixes
+
+* **exsurge:** Fix use of ℣ and ℟ for versicle, response symbols ([2557625](https://gitlab.com/sourceandsummit/react-exsurge/commit/2557625f53457f236c40548cfc5d33efba85569d))
+
+
+
 # [1.3.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.2.4...v1.3.0) (2021-01-12)
 
 

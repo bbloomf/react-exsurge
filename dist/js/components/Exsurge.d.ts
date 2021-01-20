@@ -1,7 +1,7 @@
 import React from "react";
 import * as exsurge from "exsurge";
 import { TextTypesOptions } from "../interfaces/TextTypeOptions";
-interface ExsurgeProps {
+export interface ExsurgeProps {
     gabc: string;
     useDropCap?: boolean;
     annotation?: string | string[];

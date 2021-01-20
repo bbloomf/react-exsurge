@@ -44,6 +44,7 @@ interface ExsurgeProps {
 
   onScoreUpdate?(score: exsurge.ChantScore, gabceHeaderLen: number): any;
   onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
+  mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
 }
 
 const Exsurge: React.FC<ExsurgeProps> = ({
@@ -82,6 +83,7 @@ const Exsurge: React.FC<ExsurgeProps> = ({
 
   onScoreUpdate,
   onKeyDown,
+  mapAnnotationSpansToTextLeft,
 }: ExsurgeProps) => {
   const supertitleSize = textStyles.supertitle?.size;
   const titleSize = textStyles.title?.size;
@@ -160,9 +162,16 @@ const Exsurge: React.FC<ExsurgeProps> = ({
     ctxt.editable = !!contentEditable;
 
     ctxt.useExtraTextOnly = !contentEditable;
+
   }
 
   const ctxt: exsurge.ChantContext = ctxtRef.current;
+  useEffect(() => {
+    if (typeof mapAnnotationSpansToTextLeft === 'function') {
+      ctxt.mapAnnotationSpansToTextLeft = mapAnnotationSpansToTextLeft;
+    }
+  }, [ctxt, mapAnnotationSpansToTextLeft])
+
   const handleScoreUpdate = useCallback(
     (score, gabcHeaderLen) => {
       if (typeof onScoreUpdate === "function")

@@ -11,6 +11,7 @@ declare module "exsurge" {
     latin: Language;
   };
 
+  export type AnnotationSpansToTextLeftMapper = (spans: TextSpan[]) => TextSpan[];
   interface TextType {
     display: string;
 
@@ -227,6 +228,7 @@ declare module "exsurge" {
     findNextNeume(): ChantNotationElement;
     makeCanvasIfNeeded(): void;
     setCanvasSize(width: number, height: number, scale?: number): void;
+    mapAnnotationSpansToTextLeft?: AnnotationSpansToTextLeftMapper;
   }
 
   export const TextTypes: TextTypes;

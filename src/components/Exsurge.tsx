@@ -8,7 +8,7 @@ import useArray from "../hooks/useArray";
 import getNotYetLoadedFonts from "../utils/getNotYetLoadedFonts";
 import resolveFont from "../utils/resolveFont";
 
-interface ExsurgeProps {
+export interface ExsurgeProps {
   gabc: string;
   useDropCap?: boolean;
   annotation?: string | string[];

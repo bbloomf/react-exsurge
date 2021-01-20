@@ -1,3 +1,12 @@
+## [1.5.2](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.1...v1.5.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* Fix an issue with SyllabifiedExsurge ([fadf6d8](https://gitlab.com/sourceandsummit/react-exsurge/commit/fadf6d80d5221a12f28d6321d386c52a249d57dc))
+
+
+
 ## [1.5.1](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.0...v1.5.1) (2021-01-20)
 
 

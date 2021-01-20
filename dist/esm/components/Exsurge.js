@@ -261,7 +261,6 @@ const Exsurge = ({
 };
 
 Exsurge.propTypes = {
-  gabc: _pt.string.isRequired,
   useDropCap: _pt.bool,
   annotation: _pt.oneOfType([_pt.string, _pt.arrayOf(_pt.string)]),
   contentEditable: _pt.bool,
@@ -285,7 +284,8 @@ Exsurge.propTypes = {
   staffSize: _pt.number,
   interSyllabicSpacing: _pt.number,
   spaceBetweenSystems: _pt.number,
-  spaceAboveLyrics: _pt.number
+  spaceAboveLyrics: _pt.number,
+  gabc: _pt.string.isRequired
 };
 export default Exsurge;
 export * from "exsurge";

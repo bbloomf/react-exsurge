@@ -87,12 +87,12 @@
     let {
       text,
       notation,
-      isEasterTime,
-      gabc
+      isEasterTime
     } = _ref,
-        otherProps = _objectWithoutProperties(_ref, ["text", "notation", "isEasterTime", "gabc"]);
+        otherProps = _objectWithoutProperties(_ref, ["text", "notation", "isEasterTime"]);
 
-    gabc = _gabcUtils.GabcSyllabified.merge(text, notation, isEasterTime, otherProps.useDropCap);
+    const gabc = _gabcUtils.GabcSyllabified.merge(text, notation, isEasterTime, otherProps.useDropCap);
+
     return /*#__PURE__*/_react2.default.createElement(_Exsurge2.default, _extends({
       gabc: gabc
     }, otherProps));

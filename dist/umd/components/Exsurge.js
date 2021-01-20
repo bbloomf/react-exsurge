@@ -355,7 +355,6 @@
   };
 
   Exsurge.propTypes = {
-    gabc: _propTypes2.default.string.isRequired,
     useDropCap: _propTypes2.default.bool,
     annotation: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]),
     contentEditable: _propTypes2.default.bool,
@@ -379,7 +378,8 @@
     staffSize: _propTypes2.default.number,
     interSyllabicSpacing: _propTypes2.default.number,
     spaceBetweenSystems: _propTypes2.default.number,
-    spaceAboveLyrics: _propTypes2.default.number
+    spaceAboveLyrics: _propTypes2.default.number,
+    gabc: _propTypes2.default.string.isRequired
   };
   exports.default = Exsurge;
 });

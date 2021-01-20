@@ -25,10 +25,10 @@ var SyllabifiedExsurge = function SyllabifiedExsurge(_ref) {
   var text = _ref.text,
       notation = _ref.notation,
       isEasterTime = _ref.isEasterTime,
-      gabc = _ref.gabc,
-      otherProps = _objectWithoutProperties(_ref, ["text", "notation", "isEasterTime", "gabc"]);
+      otherProps = _objectWithoutProperties(_ref, ["text", "notation", "isEasterTime"]);
 
-  gabc = _gabcUtils.GabcSyllabified.merge(text, notation, isEasterTime, otherProps.useDropCap);
+  var gabc = _gabcUtils.GabcSyllabified.merge(text, notation, isEasterTime, otherProps.useDropCap);
+
   return /*#__PURE__*/_react.default.createElement(_Exsurge.default, _extends({
     gabc: gabc
   }, otherProps));

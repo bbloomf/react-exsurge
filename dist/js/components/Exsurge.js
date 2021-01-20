@@ -367,7 +367,6 @@ var Exsurge = function Exsurge(_ref) {
 };
 
 Exsurge.propTypes = {
-  gabc: _propTypes.default.string.isRequired,
   useDropCap: _propTypes.default.bool,
   annotation: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.arrayOf(_propTypes.default.string)]),
   contentEditable: _propTypes.default.bool,
@@ -391,7 +390,8 @@ Exsurge.propTypes = {
   staffSize: _propTypes.default.number,
   interSyllabicSpacing: _propTypes.default.number,
   spaceBetweenSystems: _propTypes.default.number,
-  spaceAboveLyrics: _propTypes.default.number
+  spaceAboveLyrics: _propTypes.default.number,
+  gabc: _propTypes.default.string.isRequired
 };
 var _default = Exsurge;
 exports.default = _default;

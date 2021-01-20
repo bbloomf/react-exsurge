@@ -1,8 +1,7 @@
 import React from "react";
 import * as exsurge from "exsurge";
 import { TextTypesOptions } from "../interfaces/TextTypeOptions";
-export interface ExsurgeProps {
-    gabc: string;
+export interface SharedExsurgeProps {
     useDropCap?: boolean;
     annotation?: string | string[];
     contentEditable?: boolean;
@@ -33,6 +32,9 @@ export interface ExsurgeProps {
     onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
     mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
 }
+export declare type ExsurgeProps = SharedExsurgeProps & {
+    gabc: string;
+};
 declare const Exsurge: React.FC<ExsurgeProps>;
 export default Exsurge;
 export * from "exsurge";

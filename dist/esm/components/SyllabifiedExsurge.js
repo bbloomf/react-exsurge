@@ -14,12 +14,11 @@ const SyllabifiedExsurge = (_ref) => {
   let {
     text,
     notation,
-    isEasterTime,
-    gabc
+    isEasterTime
   } = _ref,
-      otherProps = _objectWithoutProperties(_ref, ["text", "notation", "isEasterTime", "gabc"]);
+      otherProps = _objectWithoutProperties(_ref, ["text", "notation", "isEasterTime"]);
 
-  gabc = GabcSyllabified.merge(text, notation, isEasterTime, otherProps.useDropCap);
+  const gabc = GabcSyllabified.merge(text, notation, isEasterTime, otherProps.useDropCap);
   return /*#__PURE__*/React.createElement(Exsurge, _extends({
     gabc: gabc
   }, otherProps));

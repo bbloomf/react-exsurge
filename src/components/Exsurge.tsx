@@ -8,8 +8,7 @@ import useArray from "../hooks/useArray";
 import getNotYetLoadedFonts from "../utils/getNotYetLoadedFonts";
 import resolveFont from "../utils/resolveFont";
 
-export interface ExsurgeProps {
-  gabc: string;
+export interface SharedExsurgeProps {
   useDropCap?: boolean;
   annotation?: string | string[];
   contentEditable?: boolean;
@@ -45,6 +44,10 @@ export interface ExsurgeProps {
   onScoreUpdate?(score: exsurge.ChantScore, gabceHeaderLen: number): any;
   onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
   mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
+}
+
+export type ExsurgeProps = SharedExsurgeProps & {
+  gabc: string;
 }
 
 const Exsurge: React.FC<ExsurgeProps> = ({

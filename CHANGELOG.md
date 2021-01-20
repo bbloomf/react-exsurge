@@ -1,3 +1,12 @@
+## [1.5.1](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.0...v1.5.1) (2021-01-20)
+
+
+### Bug Fixes
+
+* **syllabified exsurge:** Refactor syllabified exsurge, and add missing new parameter ([d963790](https://gitlab.com/sourceandsummit/react-exsurge/commit/d963790685f6fe67d0cad3340788a10e8f3fca62))
+
+
+
 # [1.5.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.0-1...v1.5.0) (2021-01-20)
 
 

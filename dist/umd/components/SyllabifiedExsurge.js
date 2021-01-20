@@ -29,101 +29,79 @@
     };
   }
 
-  const SyllabifiedExsurge = ({
-    text,
-    notation,
-    isEasterTime,
-    capitalizeInitial = true,
-    useDropCap,
-    annotation,
-    contentEditable,
-    alignment,
-    width,
-    height,
-    zoom,
-    selection,
-    id,
-    style,
-    className,
-    supertitle,
-    title,
-    subtitle,
-    textLeft,
-    textRight,
-    defaultFont,
-    defaultColor,
-    defaultTitleAlignment,
-    font,
-    staffSize,
-    baseFontSize,
-    interSyllabicSpacing,
-    spaceBetweenSystems,
-    spaceAboveLyrics,
-    textStyles,
-    onScoreUpdate,
-    onKeyDown
-  }) => {
-    const gabc = _gabcUtils.GabcSyllabified.merge(text, notation, isEasterTime, capitalizeInitial);
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
 
-    return /*#__PURE__*/_react2.default.createElement(_Exsurge2.default, {
-      gabc: gabc,
-      useDropCap: useDropCap,
-      annotation: annotation,
-      contentEditable: contentEditable,
-      alignment: alignment,
-      width: width,
-      height: height,
-      zoom: zoom,
-      selection: selection,
-      id: id,
-      style: style,
-      className: className,
-      supertitle: supertitle,
-      title: title,
-      subtitle: subtitle,
-      textLeft: textLeft,
-      textRight: textRight,
-      defaultFont: defaultFont,
-      defaultColor: defaultColor,
-      defaultTitleAlignment: defaultTitleAlignment,
-      font: font,
-      staffSize: staffSize,
-      baseFontSize: baseFontSize,
-      interSyllabicSpacing: interSyllabicSpacing,
-      spaceBetweenSystems: spaceBetweenSystems,
-      spaceAboveLyrics: spaceAboveLyrics,
-      textStyles: textStyles,
-      onScoreUpdate: onScoreUpdate,
-      onKeyDown: onKeyDown
-    });
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectWithoutProperties(source, excluded) {
+    if (source == null) return {};
+
+    var target = _objectWithoutPropertiesLoose(source, excluded);
+
+    var key, i;
+
+    if (Object.getOwnPropertySymbols) {
+      var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+      for (i = 0; i < sourceSymbolKeys.length; i++) {
+        key = sourceSymbolKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+        target[key] = source[key];
+      }
+    }
+
+    return target;
+  }
+
+  function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+
+    for (i = 0; i < sourceKeys.length; i++) {
+      key = sourceKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      target[key] = source[key];
+    }
+
+    return target;
+  }
+
+  const SyllabifiedExsurge = _ref => {
+    let {
+      text,
+      notation,
+      isEasterTime,
+      gabc
+    } = _ref,
+        otherProps = _objectWithoutProperties(_ref, ["text", "notation", "isEasterTime", "gabc"]);
+
+    gabc = _gabcUtils.GabcSyllabified.merge(text, notation, isEasterTime, otherProps.useDropCap);
+    return /*#__PURE__*/_react2.default.createElement(_Exsurge2.default, _extends({
+      gabc: gabc
+    }, otherProps));
   };
 
   SyllabifiedExsurge.propTypes = {
     text: _propTypes2.default.string.isRequired,
     notation: _propTypes2.default.string.isRequired,
-    isEasterTime: _propTypes2.default.bool,
-    capitalizeInitial: _propTypes2.default.bool,
-    useDropCap: _propTypes2.default.bool,
-    annotation: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]),
-    contentEditable: _propTypes2.default.bool,
-    alignment: _propTypes2.default.oneOf(["english", "latin"]),
-    width: _propTypes2.default.number,
-    height: _propTypes2.default.number,
-    zoom: _propTypes2.default.number,
-    id: _propTypes2.default.string,
-    style: _propTypes2.default.any,
-    className: _propTypes2.default.string,
-    supertitle: _propTypes2.default.string,
-    title: _propTypes2.default.string,
-    subtitle: _propTypes2.default.string,
-    textLeft: _propTypes2.default.string,
-    textRight: _propTypes2.default.string,
-    defaultFont: _propTypes2.default.string,
-    defaultColor: _propTypes2.default.string,
-    defaultTitleAlignment: _propTypes2.default.string,
-    font: _propTypes2.default.string,
-    baseFontSize: _propTypes2.default.number,
-    staffSize: _propTypes2.default.number
+    isEasterTime: _propTypes2.default.bool
   };
   exports.default = SyllabifiedExsurge;
 });

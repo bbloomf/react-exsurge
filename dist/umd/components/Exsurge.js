@@ -129,7 +129,8 @@
     spaceAboveLyrics = 0.75,
     textStyles = {},
     onScoreUpdate,
-    onKeyDown
+    onKeyDown,
+    mapAnnotationSpansToTextLeft
   }) => {
     var _textStyles$supertitl, _textStyles$title, _textStyles$subtitle, _textStyles$leftRight, _textStyles$supertitl2, _textStyles$title2, _textStyles$subtitle2, _textStyles$leftRight2, _textStyles$annotatio, _textStyles$dropCap, _textStyles$al, _textStyles$choralSig, _textStyles$lyric, _textStyles$translati, _textStyles$supertitl3, _textStyles$title3, _textStyles$subtitle3, _textStyles$leftRight3, _textStyles$annotatio2, _textStyles$dropCap2, _textStyles$al2, _textStyles$choralSig2, _textStyles$lyric2, _textStyles$translati2, _textStyles$supertitl4, _textStyles$title4, _textStyles$subtitle4, _textStyles$leftRight4, _textStyles$annotatio3, _textStyles$dropCap3, _textStyles$al3, _textStyles$choralSig3, _textStyles$lyric3, _textStyles$translati3, _textStyles$supertitl5, _textStyles$title5, _textStyles$subtitle5;
 
@@ -166,6 +167,11 @@
     }
 
     const ctxt = ctxtRef.current;
+    (0, _react.useEffect)(() => {
+      if (typeof mapAnnotationSpansToTextLeft === 'function') {
+        ctxt.mapAnnotationSpansToTextLeft = mapAnnotationSpansToTextLeft;
+      }
+    }, [ctxt, mapAnnotationSpansToTextLeft]);
     const handleScoreUpdate = (0, _react.useCallback)((score, gabcHeaderLen) => {
       if (typeof onScoreUpdate === "function") onScoreUpdate(score, gabcHeaderLen);
     }, [onScoreUpdate]);

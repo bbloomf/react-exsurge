@@ -31,6 +31,7 @@ interface ExsurgeProps {
     textStyles?: TextTypesOptions;
     onScoreUpdate?(score: exsurge.ChantScore, gabceHeaderLen: number): any;
     onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
+    mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
 }
 declare const Exsurge: React.FC<ExsurgeProps>;
 export default Exsurge;

@@ -113,7 +113,8 @@ var Exsurge = function Exsurge(_ref) {
       _ref$textStyles = _ref.textStyles,
       textStyles = _ref$textStyles === void 0 ? {} : _ref$textStyles,
       onScoreUpdate = _ref.onScoreUpdate,
-      onKeyDown = _ref.onKeyDown;
+      onKeyDown = _ref.onKeyDown,
+      mapAnnotationSpansToTextLeft = _ref.mapAnnotationSpansToTextLeft;
   var supertitleSize = (_textStyles$supertitl = textStyles.supertitle) === null || _textStyles$supertitl === void 0 ? void 0 : _textStyles$supertitl.size;
   var titleSize = (_textStyles$title = textStyles.title) === null || _textStyles$title === void 0 ? void 0 : _textStyles$title.size;
   var subtitleSize = (_textStyles$subtitle = textStyles.subtitle) === null || _textStyles$subtitle === void 0 ? void 0 : _textStyles$subtitle.size;
@@ -162,6 +163,11 @@ var Exsurge = function Exsurge(_ref) {
   }
 
   var ctxt = ctxtRef.current;
+  (0, _react.useEffect)(function () {
+    if (typeof mapAnnotationSpansToTextLeft === 'function') {
+      ctxt.mapAnnotationSpansToTextLeft = mapAnnotationSpansToTextLeft;
+    }
+  }, [ctxt, mapAnnotationSpansToTextLeft]);
   var handleScoreUpdate = (0, _react.useCallback)(function (score, gabcHeaderLen) {
     if (typeof onScoreUpdate === "function") onScoreUpdate(score, gabcHeaderLen);
   }, [onScoreUpdate]);

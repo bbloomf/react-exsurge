@@ -91,8 +91,8 @@ const Exsurge = ({
 
   const score = getScore();
 
-  if (process.env.NODE_ENV === "development") {} // DEBUG: window.$score = score;
-  // load font.  Right now we use Google, but webfontloader supports
+  if (process.env.NODE_ENV === "development") {// DEBUG: window.$score = score;
+  } // load font.  Right now we use Google, but webfontloader supports
   // • edgewebfonts.adobe.com
   // • Fontdeck.com
   // • Fonts.com
@@ -248,7 +248,7 @@ const Exsurge = ({
     setRenderCount(count => count + 1);
   }, [score, ctxt, elementSelection]);
 
-  const createReactSvg = svgTree => typeof svgTree === "string" ? svgTree : React.createElement(svgTree.name || React.Fragment, svgTree.props, ...(svgTree.children || []).map(createReactSvg));
+  const createReactSvg = svgTree => typeof svgTree === "string" ? svgTree : /*#__PURE__*/React.createElement(svgTree.name || React.Fragment, svgTree.props, ...(svgTree.children || []).map(createReactSvg));
 
   const divs = (score.pages || []).map((page, i) => /*#__PURE__*/React.createElement("div", {
     key: i,

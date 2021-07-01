@@ -30,9 +30,19 @@ Object.keys(_Exsurge).forEach(function (key) {
   });
 });
 
-var _SyllabifiedExsurge = _interopRequireDefault(require("./components/SyllabifiedExsurge"));
+var _SyllabifiedExsurge = _interopRequireWildcard(require("./components/SyllabifiedExsurge"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+Object.keys(_SyllabifiedExsurge).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _SyllabifiedExsurge[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _SyllabifiedExsurge[key];
+    }
+  });
+});
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

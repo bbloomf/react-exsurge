@@ -3,4 +3,5 @@ import SyllabifiedExsurge from './components/SyllabifiedExsurge';
 export default Exsurge;
 export * from './components/Exsurge';
 export { SyllabifiedExsurge };
+export * from './components/SyllabifiedExsurge';
 //# sourceMappingURL=index.js.map

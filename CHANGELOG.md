@@ -1,3 +1,12 @@
+## [1.5.9](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.8...v1.5.9) (2021-07-01)
+
+
+### Bug Fixes
+
+* **syllabified exsurge:** Actually export the syllabified exsurge props interface ([b39ca2e](https://gitlab.com/sourceandsummit/react-exsurge/commit/b39ca2e8d90de7917e61cd8288b8869df7f51229))
+
+
+
 ## [1.5.8](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.7...v1.5.8) (2021-07-01)
 
 

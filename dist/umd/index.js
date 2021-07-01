@@ -26,6 +26,15 @@
       }
     });
   });
+  Object.keys(_SyllabifiedExsurge).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _SyllabifiedExsurge[key];
+      }
+    });
+  });
 
   var _Exsurge2 = _interopRequireDefault(_Exsurge);
 

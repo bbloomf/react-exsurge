@@ -1,13 +1,13 @@
 import React from "react";
-import { GabcSyllabified } from 'gabc-utils';
+import { GabcSyllabified } from "gabc-utils";
 
-import Exsurge, { SharedExsurgeProps } from './Exsurge';
+import Exsurge, { SharedExsurgeProps } from "./Exsurge";
 
-type SyllabifiedExsurgeProps = {
+export interface SyllabifiedExsurgeProps extends SharedExsurgeProps {
   text: string;
   notation: string;
   isEasterTime?: boolean;
-} & SharedExsurgeProps;
+}
 
 const SyllabifiedExsurge: React.FC<SyllabifiedExsurgeProps> = ({
   text,
@@ -15,14 +15,14 @@ const SyllabifiedExsurge: React.FC<SyllabifiedExsurgeProps> = ({
   isEasterTime,
   ...otherProps
 }: SyllabifiedExsurgeProps) => {
-  const gabc = GabcSyllabified.merge(text, notation, isEasterTime, otherProps.useDropCap);
+  const gabc = GabcSyllabified.merge(
+    text,
+    notation,
+    isEasterTime,
+    otherProps.useDropCap
+  );
 
-  return (
-    <Exsurge
-      gabc={gabc}
-      {...otherProps}
-    />
-  )
+  return <Exsurge gabc={gabc} {...otherProps} />;
 };
 
 export default SyllabifiedExsurge;

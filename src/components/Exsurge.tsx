@@ -46,7 +46,7 @@ export interface SharedExsurgeProps {
   mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
 }
 
-export type ExsurgeProps = SharedExsurgeProps & {
+export interface ExsurgeProps extends SharedExsurgeProps {
   gabc: string;
 }
 

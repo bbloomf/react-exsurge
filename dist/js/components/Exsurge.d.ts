@@ -32,9 +32,9 @@ export interface SharedExsurgeProps {
     onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
     mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
 }
-export declare type ExsurgeProps = SharedExsurgeProps & {
+export interface ExsurgeProps extends SharedExsurgeProps {
     gabc: string;
-};
+}
 declare const Exsurge: React.FC<ExsurgeProps>;
 export default Exsurge;
 export * from "exsurge";

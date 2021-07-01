@@ -1,6 +1,6 @@
 {
   "name": "react-exsurge",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "private": true,
   "dependencies": {
     "exsurge": "git+ssh://git@gitlab.com/sourceandsummit/exsurge.git#v1.4.1",

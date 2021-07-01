@@ -1,9 +1,9 @@
 import React from "react";
-import { SharedExsurgeProps } from './Exsurge';
-declare type SyllabifiedExsurgeProps = {
+import { SharedExsurgeProps } from "./Exsurge";
+export interface SyllabifiedExsurgeProps extends SharedExsurgeProps {
     text: string;
     notation: string;
     isEasterTime?: boolean;
-} & SharedExsurgeProps;
+}
 declare const SyllabifiedExsurge: React.FC<SyllabifiedExsurgeProps>;
 export default SyllabifiedExsurge;

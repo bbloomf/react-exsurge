@@ -1,3 +1,12 @@
+# [1.6.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.10...v1.6.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **Exsurge.d.ts:** Update exsurge to include types ([2c27092](https://gitlab.com/sourceandsummit/react-exsurge/commit/2c270923e291a03a4fbd2b210579994f443dca1e))
+
+
+
 ## [1.5.10](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.9...v1.5.10) (2021-07-28)
 
 

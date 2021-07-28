@@ -10,6 +10,23 @@ declare module "exsurge" {
     english: Language;
     latin: Language;
   };
+  
+  export interface TextSpan {
+    text: string;
+    properties: { 
+      newLine?: number | boolean;
+      "font-weight"?: string;
+      "font-style"?: string;
+      "text-decoration"?: string;
+      "font-variant"?: string;
+      "font-variant-caps"?: string;
+      "font-feature-settings"?: string;
+      "-webkit-font-feature-settings"?: string;
+    };
+    activeTags: string[];
+    index: number;
+    clone: () => TextSpan;
+  }
 
   export type AnnotationSpansToTextLeftMapper = (spans: TextSpan[]) => TextSpan[];
   interface TextType {

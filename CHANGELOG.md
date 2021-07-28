@@ -1,3 +1,7 @@
+## [1.5.10](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.9...v1.5.10) (2021-07-28)
+
+
+
 ## [1.5.9](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.8...v1.5.9) (2021-07-01)
 
 

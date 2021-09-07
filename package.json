@@ -3,7 +3,7 @@
   "version": "1.6.0",
   "private": true,
   "dependencies": {
-    "exsurge": "git+ssh://git@gitlab.com/sourceandsummit/exsurge.git#v1.4.2",
+    "exsurge": "gitlab:sourceandsummit/exsurge#v1.5.2",
     "gabc-utils": "git+ssh://git@gitlab.com/sourceandsummit/gabc-utils.git#v3.3.1",
     "react-dom": "^16.13.1",
     "webfontloader": "^1.6.28"

@@ -1,3 +1,12 @@
+## [1.6.1](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.6.0...v1.6.1) (2021-09-07)
+
+
+### Bug Fixes
+
+* **exsurge:** Fix spacing issue with r0 notes ([4d711a9](https://gitlab.com/sourceandsummit/react-exsurge/commit/4d711a92f0b52bab9cc6559eaa5f2f99e31a0e79))
+
+
+
 # [1.6.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.5.10...v1.6.0) (2021-07-28)
 
 

@@ -1,3 +1,12 @@
+## [1.6.2](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.6.1...v1.6.2) (2021-09-13)
+
+
+### Bug Fixes
+
+* **exsurge:** Fix a bug ([fc9680c](https://gitlab.com/sourceandsummit/react-exsurge/commit/fc9680cb63425ff445162a441824d79a615e63e1))
+
+
+
 ## [1.6.1](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.6.0...v1.6.1) (2021-09-07)
 
 

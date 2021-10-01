@@ -1,11 +1,13 @@
 import _pt from "prop-types";
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import WebFont from "webfontloader";
 import * as exsurge from "exsurge";
 import usePrevious from "../hooks/usePrevious";
 import useArray from "../hooks/useArray";
 import getNotYetLoadedFonts from "../utils/getNotYetLoadedFonts";
 import resolveFont from "../utils/resolveFont";
+
+const createReactSvg = svgTree => typeof svgTree === "string" ? svgTree : /*#__PURE__*/React.createElement(svgTree.name || React.Fragment, svgTree.props, ...(svgTree.children || []).map(createReactSvg));
 
 const Exsurge = ({
   gabc,
@@ -20,6 +22,7 @@ const Exsurge = ({
   id,
   style,
   className,
+  svgClass,
   supertitle,
   title,
   subtitle,
@@ -36,11 +39,19 @@ const Exsurge = ({
   spaceAboveLyrics = 0.75,
   textStyles = {},
   onScoreUpdate,
+  onRender,
   onKeyDown,
   mapAnnotationSpansToTextLeft
 }) => {
   var _textStyles$supertitl, _textStyles$title, _textStyles$subtitle, _textStyles$leftRight, _textStyles$supertitl2, _textStyles$title2, _textStyles$subtitle2, _textStyles$leftRight2, _textStyles$annotatio, _textStyles$dropCap, _textStyles$al, _textStyles$choralSig, _textStyles$lyric, _textStyles$translati, _textStyles$supertitl3, _textStyles$title3, _textStyles$subtitle3, _textStyles$leftRight3, _textStyles$annotatio2, _textStyles$dropCap2, _textStyles$al2, _textStyles$choralSig2, _textStyles$lyric2, _textStyles$translati2, _textStyles$supertitl4, _textStyles$title4, _textStyles$subtitle4, _textStyles$leftRight4, _textStyles$annotatio3, _textStyles$dropCap3, _textStyles$al3, _textStyles$choralSig3, _textStyles$lyric3, _textStyles$translati3, _textStyles$supertitl5, _textStyles$title5, _textStyles$subtitle5;
 
+  const addSvgClass = useMemo(() => svgClass ? node => {
+    const props = node.props || (node.props = {});
+    const propKey = 'class' in props ? 'class' : 'className';
+    const classNamePrefix = props[propKey] ? props[propKey] + " " : "";
+    props[propKey] = classNamePrefix + svgClass;
+    return node;
+  } : node => node, [svgClass]);
   const supertitleSize = (_textStyles$supertitl = textStyles.supertitle) === null || _textStyles$supertitl === void 0 ? void 0 : _textStyles$supertitl.size;
   const titleSize = (_textStyles$title = textStyles.title) === null || _textStyles$title === void 0 ? void 0 : _textStyles$title.size;
   const subtitleSize = (_textStyles$subtitle = textStyles.subtitle) === null || _textStyles$subtitle === void 0 ? void 0 : _textStyles$subtitle.size;
@@ -79,9 +90,7 @@ const Exsurge = ({
       ctxt.mapAnnotationSpansToTextLeft = mapAnnotationSpansToTextLeft;
     }
   }, [ctxt, mapAnnotationSpansToTextLeft]);
-  const handleScoreUpdate = useCallback((score, gabcHeaderLen) => {
-    if (typeof onScoreUpdate === "function") onScoreUpdate(score, gabcHeaderLen);
-  }, [onScoreUpdate]);
+  const handleScoreUpdate = useCallback((score, gabcHeaderLen) => onScoreUpdate === null || onScoreUpdate === void 0 ? void 0 : onScoreUpdate(score, gabcHeaderLen), [onScoreUpdate]);
   const scoreRef = useRef();
 
   function getScore() {
@@ -239,7 +248,8 @@ const Exsurge = ({
     }
 
     setRenderCount(count => count + 1);
-  }, [score, ctxt, fontLoaded, textFontsArray, textSizesArray, textColorsArray, titleAlignmentsArray, supertitle, title, subtitle, textLeft, textRight, staffSize, interSyllabicSpacing, spaceBetweenSystems, baseFontSize, alignment, useDropCap, gabc, selectionInsertion, annotationArray, width, height, handleScoreUpdate]); // selection:
+    onRender === null || onRender === void 0 ? void 0 : onRender();
+  }, [score, ctxt, fontLoaded, onRender, textFontsArray, textSizesArray, textColorsArray, titleAlignmentsArray, supertitle, title, subtitle, textLeft, textRight, staffSize, interSyllabicSpacing, spaceBetweenSystems, baseFontSize, alignment, useDropCap, gabc, selectionInsertion, annotationArray, width, height, handleScoreUpdate]); // selection:
 
   useEffect(() => {
     let newSelection = {};
@@ -247,16 +257,13 @@ const Exsurge = ({
     score.updateSelection(newSelection);
     setRenderCount(count => count + 1);
   }, [score, ctxt, elementSelection]);
-
-  const createReactSvg = svgTree => typeof svgTree === "string" ? svgTree : /*#__PURE__*/React.createElement(svgTree.name || React.Fragment, svgTree.props, ...(svgTree.children || []).map(createReactSvg));
-
   const divs = (score.pages || []).map((page, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     id: id && id + "-" + i,
     className: `Exsurge ${className || ""}`,
     style: style,
     onKeyDown: onKeyDown
-  }, createReactSvg(page.createSvgTree(ctxt, zoom))));
+  }, createReactSvg(addSvgClass(page.createSvgTree(ctxt, zoom)))));
   return /*#__PURE__*/React.createElement(React.Fragment, null, divs);
 };
 
@@ -271,6 +278,7 @@ Exsurge.propTypes = {
   id: _pt.string,
   style: _pt.any,
   className: _pt.string,
+  svgClass: _pt.string,
   supertitle: _pt.string,
   title: _pt.string,
   subtitle: _pt.string,
@@ -284,8 +292,7 @@ Exsurge.propTypes = {
   staffSize: _pt.number,
   interSyllabicSpacing: _pt.number,
   spaceBetweenSystems: _pt.number,
-  spaceAboveLyrics: _pt.number,
-  gabc: _pt.string.isRequired
+  spaceAboveLyrics: _pt.number
 };
 export default Exsurge;
 export * from "exsurge";

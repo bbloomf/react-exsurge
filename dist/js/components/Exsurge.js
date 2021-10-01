@@ -48,25 +48,29 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var createReactSvg = function createReactSvg(svgTree) {
+  return typeof svgTree === "string" ? svgTree : _react.default.createElement.apply(_react.default, [svgTree.name || _react.default.Fragment, svgTree.props].concat(_toConsumableArray((svgTree.children || []).map(createReactSvg))));
+};
 
 var Exsurge = function Exsurge(_ref) {
   var _textStyles$supertitl, _textStyles$title, _textStyles$subtitle, _textStyles$leftRight, _textStyles$supertitl2, _textStyles$title2, _textStyles$subtitle2, _textStyles$leftRight2, _textStyles$annotatio, _textStyles$dropCap, _textStyles$al, _textStyles$choralSig, _textStyles$lyric, _textStyles$translati, _textStyles$supertitl3, _textStyles$title3, _textStyles$subtitle3, _textStyles$leftRight3, _textStyles$annotatio2, _textStyles$dropCap2, _textStyles$al2, _textStyles$choralSig2, _textStyles$lyric2, _textStyles$translati2, _textStyles$supertitl4, _textStyles$title4, _textStyles$subtitle4, _textStyles$leftRight4, _textStyles$annotatio3, _textStyles$dropCap3, _textStyles$al3, _textStyles$choralSig3, _textStyles$lyric3, _textStyles$translati3, _textStyles$supertitl5, _textStyles$title5, _textStyles$subtitle5;
@@ -89,6 +93,7 @@ var Exsurge = function Exsurge(_ref) {
       id = _ref.id,
       style = _ref.style,
       className = _ref.className,
+      svgClass = _ref.svgClass,
       supertitle = _ref.supertitle,
       title = _ref.title,
       subtitle = _ref.subtitle,
@@ -114,8 +119,20 @@ var Exsurge = function Exsurge(_ref) {
       _ref$textStyles = _ref.textStyles,
       textStyles = _ref$textStyles === void 0 ? {} : _ref$textStyles,
       onScoreUpdate = _ref.onScoreUpdate,
+      onRender = _ref.onRender,
       onKeyDown = _ref.onKeyDown,
       mapAnnotationSpansToTextLeft = _ref.mapAnnotationSpansToTextLeft;
+  var addSvgClass = (0, _react.useMemo)(function () {
+    return svgClass ? function (node) {
+      var props = node.props || (node.props = {});
+      var propKey = 'class' in props ? 'class' : 'className';
+      var classNamePrefix = props[propKey] ? props[propKey] + " " : "";
+      props[propKey] = classNamePrefix + svgClass;
+      return node;
+    } : function (node) {
+      return node;
+    };
+  }, [svgClass]);
   var supertitleSize = (_textStyles$supertitl = textStyles.supertitle) === null || _textStyles$supertitl === void 0 ? void 0 : _textStyles$supertitl.size;
   var titleSize = (_textStyles$title = textStyles.title) === null || _textStyles$title === void 0 ? void 0 : _textStyles$title.size;
   var subtitleSize = (_textStyles$subtitle = textStyles.subtitle) === null || _textStyles$subtitle === void 0 ? void 0 : _textStyles$subtitle.size;
@@ -170,7 +187,7 @@ var Exsurge = function Exsurge(_ref) {
     }
   }, [ctxt, mapAnnotationSpansToTextLeft]);
   var handleScoreUpdate = (0, _react.useCallback)(function (score, gabcHeaderLen) {
-    if (typeof onScoreUpdate === "function") onScoreUpdate(score, gabcHeaderLen);
+    return onScoreUpdate === null || onScoreUpdate === void 0 ? void 0 : onScoreUpdate(score, gabcHeaderLen);
   }, [onScoreUpdate]);
   var scoreRef = (0, _react.useRef)();
 
@@ -340,7 +357,8 @@ var Exsurge = function Exsurge(_ref) {
     setRenderCount(function (count) {
       return count + 1;
     });
-  }, [score, ctxt, fontLoaded, textFontsArray, textSizesArray, textColorsArray, titleAlignmentsArray, supertitle, title, subtitle, textLeft, textRight, staffSize, interSyllabicSpacing, spaceBetweenSystems, baseFontSize, alignment, useDropCap, gabc, selectionInsertion, annotationArray, width, height, handleScoreUpdate]); // selection:
+    onRender === null || onRender === void 0 ? void 0 : onRender();
+  }, [score, ctxt, fontLoaded, onRender, textFontsArray, textSizesArray, textColorsArray, titleAlignmentsArray, supertitle, title, subtitle, textLeft, textRight, staffSize, interSyllabicSpacing, spaceBetweenSystems, baseFontSize, alignment, useDropCap, gabc, selectionInsertion, annotationArray, width, height, handleScoreUpdate]); // selection:
 
   (0, _react.useEffect)(function () {
     var newSelection = {};
@@ -350,11 +368,6 @@ var Exsurge = function Exsurge(_ref) {
       return count + 1;
     });
   }, [score, ctxt, elementSelection]);
-
-  var createReactSvg = function createReactSvg(svgTree) {
-    return typeof svgTree === "string" ? svgTree : _react.default.createElement.apply(_react.default, [svgTree.name || _react.default.Fragment, svgTree.props].concat(_toConsumableArray((svgTree.children || []).map(createReactSvg))));
-  };
-
   var divs = (score.pages || []).map(function (page, i) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: i,
@@ -362,7 +375,7 @@ var Exsurge = function Exsurge(_ref) {
       className: "Exsurge ".concat(className || ""),
       style: style,
       onKeyDown: onKeyDown
-    }, createReactSvg(page.createSvgTree(ctxt, zoom)));
+    }, createReactSvg(addSvgClass(page.createSvgTree(ctxt, zoom))));
   });
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, divs);
 };
@@ -378,6 +391,7 @@ Exsurge.propTypes = {
   id: _propTypes.default.string,
   style: _propTypes.default.any,
   className: _propTypes.default.string,
+  svgClass: _propTypes.default.string,
   supertitle: _propTypes.default.string,
   title: _propTypes.default.string,
   subtitle: _propTypes.default.string,
@@ -391,8 +405,7 @@ Exsurge.propTypes = {
   staffSize: _propTypes.default.number,
   interSyllabicSpacing: _propTypes.default.number,
   spaceBetweenSystems: _propTypes.default.number,
-  spaceAboveLyrics: _propTypes.default.number,
-  gabc: _propTypes.default.string.isRequired
+  spaceAboveLyrics: _propTypes.default.number
 };
 var _default = Exsurge;
 exports.default = _default;

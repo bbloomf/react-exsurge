@@ -13,6 +13,7 @@ export interface SharedExsurgeProps {
     id?: string;
     style?: any;
     className?: string;
+    svgClass?: string;
     supertitle?: string;
     title?: string;
     subtitle?: string;
@@ -29,6 +30,7 @@ export interface SharedExsurgeProps {
     spaceAboveLyrics?: number;
     textStyles?: TextTypesOptions;
     onScoreUpdate?(score: exsurge.ChantScore, gabceHeaderLen: number): any;
+    onRender?: () => void;
     onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
     mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
 }

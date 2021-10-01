@@ -100,6 +100,8 @@
     };
   }
 
+  const createReactSvg = svgTree => typeof svgTree === "string" ? svgTree : /*#__PURE__*/_react2.default.createElement(svgTree.name || _react2.default.Fragment, svgTree.props, ...(svgTree.children || []).map(createReactSvg));
+
   const Exsurge = ({
     gabc,
     useDropCap = true,
@@ -113,6 +115,7 @@
     id,
     style,
     className,
+    svgClass,
     supertitle,
     title,
     subtitle,
@@ -129,11 +132,19 @@
     spaceAboveLyrics = 0.75,
     textStyles = {},
     onScoreUpdate,
+    onRender,
     onKeyDown,
     mapAnnotationSpansToTextLeft
   }) => {
     var _textStyles$supertitl, _textStyles$title, _textStyles$subtitle, _textStyles$leftRight, _textStyles$supertitl2, _textStyles$title2, _textStyles$subtitle2, _textStyles$leftRight2, _textStyles$annotatio, _textStyles$dropCap, _textStyles$al, _textStyles$choralSig, _textStyles$lyric, _textStyles$translati, _textStyles$supertitl3, _textStyles$title3, _textStyles$subtitle3, _textStyles$leftRight3, _textStyles$annotatio2, _textStyles$dropCap2, _textStyles$al2, _textStyles$choralSig2, _textStyles$lyric2, _textStyles$translati2, _textStyles$supertitl4, _textStyles$title4, _textStyles$subtitle4, _textStyles$leftRight4, _textStyles$annotatio3, _textStyles$dropCap3, _textStyles$al3, _textStyles$choralSig3, _textStyles$lyric3, _textStyles$translati3, _textStyles$supertitl5, _textStyles$title5, _textStyles$subtitle5;
 
+    const addSvgClass = (0, _react.useMemo)(() => svgClass ? node => {
+      const props = node.props || (node.props = {});
+      const propKey = 'class' in props ? 'class' : 'className';
+      const classNamePrefix = props[propKey] ? props[propKey] + " " : "";
+      props[propKey] = classNamePrefix + svgClass;
+      return node;
+    } : node => node, [svgClass]);
     const supertitleSize = (_textStyles$supertitl = textStyles.supertitle) === null || _textStyles$supertitl === void 0 ? void 0 : _textStyles$supertitl.size;
     const titleSize = (_textStyles$title = textStyles.title) === null || _textStyles$title === void 0 ? void 0 : _textStyles$title.size;
     const subtitleSize = (_textStyles$subtitle = textStyles.subtitle) === null || _textStyles$subtitle === void 0 ? void 0 : _textStyles$subtitle.size;
@@ -172,9 +183,7 @@
         ctxt.mapAnnotationSpansToTextLeft = mapAnnotationSpansToTextLeft;
       }
     }, [ctxt, mapAnnotationSpansToTextLeft]);
-    const handleScoreUpdate = (0, _react.useCallback)((score, gabcHeaderLen) => {
-      if (typeof onScoreUpdate === "function") onScoreUpdate(score, gabcHeaderLen);
-    }, [onScoreUpdate]);
+    const handleScoreUpdate = (0, _react.useCallback)((score, gabcHeaderLen) => onScoreUpdate === null || onScoreUpdate === void 0 ? void 0 : onScoreUpdate(score, gabcHeaderLen), [onScoreUpdate]);
     const scoreRef = (0, _react.useRef)();
 
     function getScore() {
@@ -333,7 +342,8 @@
       }
 
       setRenderCount(count => count + 1);
-    }, [score, ctxt, fontLoaded, textFontsArray, textSizesArray, textColorsArray, titleAlignmentsArray, supertitle, title, subtitle, textLeft, textRight, staffSize, interSyllabicSpacing, spaceBetweenSystems, baseFontSize, alignment, useDropCap, gabc, selectionInsertion, annotationArray, width, height, handleScoreUpdate]); // selection:
+      onRender === null || onRender === void 0 ? void 0 : onRender();
+    }, [score, ctxt, fontLoaded, onRender, textFontsArray, textSizesArray, textColorsArray, titleAlignmentsArray, supertitle, title, subtitle, textLeft, textRight, staffSize, interSyllabicSpacing, spaceBetweenSystems, baseFontSize, alignment, useDropCap, gabc, selectionInsertion, annotationArray, width, height, handleScoreUpdate]); // selection:
 
     (0, _react.useEffect)(() => {
       let newSelection = {};
@@ -341,16 +351,13 @@
       score.updateSelection(newSelection);
       setRenderCount(count => count + 1);
     }, [score, ctxt, elementSelection]);
-
-    const createReactSvg = svgTree => typeof svgTree === "string" ? svgTree : /*#__PURE__*/_react2.default.createElement(svgTree.name || _react2.default.Fragment, svgTree.props, ...(svgTree.children || []).map(createReactSvg));
-
     const divs = (score.pages || []).map((page, i) => /*#__PURE__*/_react2.default.createElement("div", {
       key: i,
       id: id && id + "-" + i,
       className: `Exsurge ${className || ""}`,
       style: style,
       onKeyDown: onKeyDown
-    }, createReactSvg(page.createSvgTree(ctxt, zoom))));
+    }, createReactSvg(addSvgClass(page.createSvgTree(ctxt, zoom)))));
     return /*#__PURE__*/_react2.default.createElement(_react2.default.Fragment, null, divs);
   };
 
@@ -365,6 +372,7 @@
     id: _propTypes2.default.string,
     style: _propTypes2.default.any,
     className: _propTypes2.default.string,
+    svgClass: _propTypes2.default.string,
     supertitle: _propTypes2.default.string,
     title: _propTypes2.default.string,
     subtitle: _propTypes2.default.string,
@@ -378,8 +386,7 @@
     staffSize: _propTypes2.default.number,
     interSyllabicSpacing: _propTypes2.default.number,
     spaceBetweenSystems: _propTypes2.default.number,
-    spaceAboveLyrics: _propTypes2.default.number,
-    gabc: _propTypes2.default.string.isRequired
+    spaceAboveLyrics: _propTypes2.default.number
   };
   exports.default = Exsurge;
 });

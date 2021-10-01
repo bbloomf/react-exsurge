@@ -1,3 +1,12 @@
+# [1.7.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.6.10...v1.7.0) (2021-10-01)
+
+
+### Features
+
+* Add svgClass and onRender props ([6e8c1f1](https://gitlab.com/sourceandsummit/react-exsurge/commit/6e8c1f1a75c3677df4fb944b4d94434917f5a105))
+
+
+
 ## [1.6.10](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.6.9...v1.6.10) (2021-09-30)
 
 

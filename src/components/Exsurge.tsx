@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import WebFont from "webfontloader";
 import * as exsurge from "exsurge";
+import { SvgTreeNode } from "exsurge";
 import { TextTypesOptions } from "../interfaces/TextTypeOptions";
 import { LoadedFontsDictionary } from "../interfaces/LoadedFontsDictionary";
 import usePrevious from "../hooks/usePrevious";
@@ -21,6 +22,7 @@ export interface SharedExsurgeProps {
   id?: string;
   style?: any;
   className?: string;
+  svgClass?: string;
 
   supertitle?: string;
   title?: string;
@@ -42,9 +44,21 @@ export interface SharedExsurgeProps {
   textStyles?: TextTypesOptions;
 
   onScoreUpdate?(score: exsurge.ChantScore, gabceHeaderLen: number): any;
+  onRender?: () => void;
   onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
   mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
 }
+
+const createReactSvg = (
+  svgTree: exsurge.SvgTreeNode | string
+): React.ReactElement | string =>
+  typeof svgTree === "string"
+    ? svgTree
+    : React.createElement(
+        svgTree.name || React.Fragment,
+        svgTree.props,
+        ...(svgTree.children || []).map(createReactSvg)
+      );
 
 export interface ExsurgeProps extends SharedExsurgeProps {
   gabc: string;
@@ -64,6 +78,7 @@ const Exsurge: React.FC<ExsurgeProps> = ({
   id,
   style,
   className,
+  svgClass,
 
   supertitle,
   title,
@@ -85,9 +100,26 @@ const Exsurge: React.FC<ExsurgeProps> = ({
   textStyles = {},
 
   onScoreUpdate,
+  onRender,
   onKeyDown,
   mapAnnotationSpansToTextLeft,
 }: ExsurgeProps) => {
+  const addSvgClass = useMemo(
+    () =>
+      svgClass
+        ? (node: SvgTreeNode) => {
+            const props = node.props || (node.props = {});
+            const propKey = 'class' in props ? 'class' : 'className';
+            const classNamePrefix = props[propKey]
+              ? props[propKey] + " "
+              : "";
+            props[propKey] = classNamePrefix + svgClass;
+            return node;
+          }
+        : (node: SvgTreeNode) => node,
+    [svgClass]
+  );
+
   const supertitleSize = textStyles.supertitle?.size;
   const titleSize = textStyles.title?.size;
   const subtitleSize = textStyles.subtitle?.size;
@@ -176,10 +208,7 @@ const Exsurge: React.FC<ExsurgeProps> = ({
   }, [ctxt, mapAnnotationSpansToTextLeft])
 
   const handleScoreUpdate = useCallback(
-    (score, gabcHeaderLen) => {
-      if (typeof onScoreUpdate === "function")
-        onScoreUpdate(score, gabcHeaderLen);
-    },
+    (score, gabcHeaderLen) => onScoreUpdate?.(score, gabcHeaderLen),
     [onScoreUpdate]
   );
   const scoreRef: React.MutableRefObject<
@@ -410,10 +439,12 @@ const Exsurge: React.FC<ExsurgeProps> = ({
       // setPageCount(score.pages.length);
     }
     setRenderCount((count) => count + 1);
+    onRender?.();
   }, [
     score,
     ctxt,
     fontLoaded,
+    onRender,
 
     textFontsArray,
     textSizesArray,
@@ -448,17 +479,6 @@ const Exsurge: React.FC<ExsurgeProps> = ({
     setRenderCount((count) => count + 1);
   }, [score, ctxt, elementSelection]);
 
-  const createReactSvg = (
-    svgTree: exsurge.SvgTreeNode | string
-  ): React.ReactElement | string =>
-    typeof svgTree === "string"
-      ? svgTree
-      : React.createElement(
-          svgTree.name || React.Fragment,
-          svgTree.props,
-          ...(svgTree.children || []).map(createReactSvg)
-        );
-
   const divs = (score.pages || []).map((page, i) => (
     <div
       key={i}
@@ -467,7 +487,7 @@ const Exsurge: React.FC<ExsurgeProps> = ({
       style={style}
       onKeyDown={onKeyDown}
     >
-      {createReactSvg(page.createSvgTree(ctxt, zoom))}
+      {createReactSvg(addSvgClass(page.createSvgTree(ctxt, zoom)))}
     </div>
   ));
 

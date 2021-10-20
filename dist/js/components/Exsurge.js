@@ -160,7 +160,6 @@ var Exsurge = function Exsurge(_ref) {
 
     _ctxt.specialCharProperties["font-family"] = "Versiculum";
     _ctxt.specialCharProperties["font-variant"] = "normal";
-    _ctxt.specialCharProperties["font-size"] = "120%";
     _ctxt.specialCharProperties["font-weight"] = "400";
 
     var defaultSpecialCharText = _ctxt.specialCharText || function (char) {
@@ -172,8 +171,9 @@ var Exsurge = function Exsurge(_ref) {
     };
 
     _ctxt.textAfterSpecialChar = "";
+    _ctxt.autoColor = false;
 
-    _ctxt.setRubricColor("#d00");
+    _ctxt.setRubricColor("");
 
     _ctxt.minSpaceAboveStaff = 0;
     _ctxt.editable = !!contentEditable;

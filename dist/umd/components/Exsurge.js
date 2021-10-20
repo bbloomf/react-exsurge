@@ -163,7 +163,6 @@
       let ctxt = ctxtRef.current = new exsurge.ChantContext(exsurge.TextMeasuringStrategy.Canvas);
       ctxt.specialCharProperties["font-family"] = `Versiculum`;
       ctxt.specialCharProperties["font-variant"] = "normal";
-      ctxt.specialCharProperties["font-size"] = "120%";
       ctxt.specialCharProperties["font-weight"] = "400";
 
       const defaultSpecialCharText = ctxt.specialCharText || (char => char);
@@ -171,7 +170,8 @@
       ctxt.specialCharText = char => defaultSpecialCharText(char).toLowerCase();
 
       ctxt.textAfterSpecialChar = "";
-      ctxt.setRubricColor("#d00");
+      ctxt.autoColor = false;
+      ctxt.setRubricColor("");
       ctxt.minSpaceAboveStaff = 0;
       ctxt.editable = !!contentEditable;
       ctxt.useExtraTextOnly = !contentEditable;

@@ -1,3 +1,12 @@
+# [1.8.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.7.0...v1.8.0) (2021-10-20)
+
+
+### Features
+
+* **exsurge:** Update exsurge to use classes instead of styles to color rubrics ([9678e6b](https://gitlab.com/sourceandsummit/react-exsurge/commit/9678e6b2bcb84576521446d9cf084dfca2cdb57c))
+
+
+
 # [1.7.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.6.10...v1.7.0) (2021-10-01)
 
 

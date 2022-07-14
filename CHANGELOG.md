@@ -1,3 +1,12 @@
+# [1.9.0](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.8.3...v1.9.0) (2022-07-14)
+
+
+### Features
+
+* Add support for greextra font ([6715d18](https://gitlab.com/sourceandsummit/react-exsurge/commit/6715d1810e506f555227b821f1ac6ae86327e5ea))
+
+
+
 ## [1.8.3](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.8.2...v1.8.3) (2022-07-13)
 
 

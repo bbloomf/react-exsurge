@@ -161,21 +161,16 @@ var Exsurge = function Exsurge(_ref) {
     _ctxt.specialCharProperties["font-family"] = "Versiculum";
     _ctxt.specialCharProperties["font-variant"] = "normal";
     _ctxt.specialCharProperties["font-weight"] = "400";
-
-    var defaultSpecialCharText = _ctxt.specialCharText || function (char) {
-      return char;
-    };
-
-    _ctxt.specialCharText = function (char) {
-      return defaultSpecialCharText(char).toLowerCase();
-    };
-
     _ctxt.textAfterSpecialChar = "";
     _ctxt.autoColor = false;
 
     _ctxt.setRubricColor("");
 
     _ctxt.minSpaceAboveStaff = 0;
+    _ctxt.specialCharMap['*'] = exsurge.greextraGlyphs.StarSix;
+    _ctxt.specialCharMap['+'] = exsurge.greextraGlyphs.Dagger;
+    _ctxt.asteriskProperties["font-family"] = "greextra";
+    _ctxt.plusProperties["font-family"] = "greextra";
     _ctxt.editable = !!contentEditable;
     _ctxt.useExtraTextOnly = !contentEditable;
   }

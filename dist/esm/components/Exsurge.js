@@ -71,15 +71,14 @@ const Exsurge = ({
     ctxt.specialCharProperties["font-family"] = `Versiculum`;
     ctxt.specialCharProperties["font-variant"] = "normal";
     ctxt.specialCharProperties["font-weight"] = "400";
-
-    const defaultSpecialCharText = ctxt.specialCharText || (char => char);
-
-    ctxt.specialCharText = char => defaultSpecialCharText(char).toLowerCase();
-
     ctxt.textAfterSpecialChar = "";
     ctxt.autoColor = false;
     ctxt.setRubricColor("");
     ctxt.minSpaceAboveStaff = 0;
+    ctxt.specialCharMap['*'] = exsurge.greextraGlyphs.StarSix;
+    ctxt.specialCharMap['+'] = exsurge.greextraGlyphs.Dagger;
+    ctxt.asteriskProperties["font-family"] = `greextra`;
+    ctxt.plusProperties["font-family"] = `greextra`;
     ctxt.editable = !!contentEditable;
     ctxt.useExtraTextOnly = !contentEditable;
   }

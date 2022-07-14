@@ -33,6 +33,7 @@ export interface SharedExsurgeProps {
     onRender?: () => void;
     onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
     mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
+    contextCreated?: (ctxt: exsurge.ChantContext) => void;
 }
 export interface ExsurgeProps extends SharedExsurgeProps {
     gabc: string;

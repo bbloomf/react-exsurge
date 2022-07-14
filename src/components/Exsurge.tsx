@@ -47,6 +47,7 @@ export interface SharedExsurgeProps {
   onRender?: () => void;
   onKeyDown?(event: React.KeyboardEvent<HTMLDivElement>): any;
   mapAnnotationSpansToTextLeft?: exsurge.AnnotationSpansToTextLeftMapper;
+  contextCreated?: (ctxt: exsurge.ChantContext) => void;
 }
 
 const createReactSvg = (
@@ -103,6 +104,7 @@ const Exsurge: React.FC<ExsurgeProps> = ({
   onRender,
   onKeyDown,
   mapAnnotationSpansToTextLeft,
+  contextCreated,
 }: ExsurgeProps) => {
   const addSvgClass = useMemo(
     () =>
@@ -187,20 +189,17 @@ const Exsurge: React.FC<ExsurgeProps> = ({
     ctxt.specialCharProperties["font-family"] = `Versiculum`;
     ctxt.specialCharProperties["font-variant"] = "normal";
     ctxt.specialCharProperties["font-weight"] = "400";
+    const defaultSpecialCharText = ctxt.specialCharText || ((char: string) => char);
+    ctxt.specialCharText = (char) => defaultSpecialCharText(char).toLowerCase();
     ctxt.textAfterSpecialChar = "";
     ctxt.autoColor = false;
     ctxt.setRubricColor("");
     ctxt.minSpaceAboveStaff = 0;
-    ctxt.specialCharMap['*'] = exsurge.greextraGlyphs.StarSix;
-    ctxt.specialCharMap['+'] = exsurge.greextraGlyphs.Dagger;
-    ctxt.asteriskProperties["font-family"] = `greextra`;
-    ctxt.plusProperties["font-family"] = `greextra`;
-    
 
     ctxt.editable = !!contentEditable;
 
     ctxt.useExtraTextOnly = !contentEditable;
-
+    contextCreated?.(ctxt);
   }
 
   const ctxt: exsurge.ChantContext = ctxtRef.current;

@@ -1,3 +1,12 @@
+## [1.10.2](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.9.7...v1.10.2) (2022-08-16)
+
+
+### Features
+
+* Update exsurge ([c094f26](https://gitlab.com/sourceandsummit/react-exsurge/commit/c094f26bb8c4853f66c1271c1191b5865d880e76))
+
+
+
 ## [1.9.7](https://gitlab.com/sourceandsummit/react-exsurge/compare/v1.9.6...v1.9.7) (2022-07-14)
 
 

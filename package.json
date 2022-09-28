@@ -3,8 +3,8 @@
   "version": "1.10.3",
   "private": true,
   "dependencies": {
-    "exsurge": "gitlab:sourceandsummit/exsurge#v1.10.3",
-    "gabc-utils": "gitlab:sourceandsummit/gabc-utils#v3.10.1",
+    "exsurge": "gitlab:sourceandsummit/exsurge#v1.10.4",
+    "gabc-utils": "gitlab:sourceandsummit/gabc-utils#v3.10.2",
     "react-dom": "^16.13.1",
     "webfontloader": "^1.6.28"
   },
